@@ -1,17 +1,17 @@
 import 'package:news_app/models/news_model.dart';
 
 class CategoryModel {
-  final String coverImage, text;
+  final String coverImage, category;
   final List<NewsModel> news;
 
   CategoryModel(
-      {required this.coverImage, required this.text, required this.news});
+      {required this.coverImage, required this.category, required this.news});
 }
 
 List<CategoryModel> getCategories() {
   CategoryModel entertainment = CategoryModel(
           coverImage: "assets/entertaiment.avif",
-          text: "Entertainment",
+          category: "Entertainment",
           news: [
             NewsModel(
                 image: "assets/jajaja.jpg",
@@ -40,7 +40,7 @@ List<CategoryModel> getCategories() {
           ]),
       health = CategoryModel(
           coverImage: "assets/health.avif",
-          text: "Health",
+          category: "Health",
           news: [
             NewsModel(
                 image: "assets/jajaja.jpg",
@@ -69,7 +69,7 @@ List<CategoryModel> getCategories() {
           ]),
       science = CategoryModel(
           coverImage: "assets/science.avif",
-          text: "Science",
+          category: "Science",
           news: [
             NewsModel(
                 image: "assets/jajaja.jpg",
@@ -98,7 +98,7 @@ List<CategoryModel> getCategories() {
           ]),
       technology = CategoryModel(
           coverImage: "assets/technology.jpeg",
-          text: "Technology",
+          category: "Technology",
           news: [
             NewsModel(
                 image: "assets/jajaja.jpg",
@@ -127,7 +127,7 @@ List<CategoryModel> getCategories() {
           ]),
       sports = CategoryModel(
           coverImage: "assets/sports.avif",
-          text: "Sports",
+          category: "Sports",
           news: [
             NewsModel(
                 image: "assets/jajaja.jpg",
@@ -156,7 +156,7 @@ List<CategoryModel> getCategories() {
           ]),
       general = CategoryModel(
           coverImage: "assets/general.avif",
-          text: "General",
+          category: "General",
           news: [
             NewsModel(
                 image: "assets/jajaja.jpg",
@@ -185,7 +185,7 @@ List<CategoryModel> getCategories() {
           ]),
       business = CategoryModel(
           coverImage: "assets/business.avif",
-          text: "Business",
+          category: "Business",
           news: [
             NewsModel(
                 image: "assets/jajaja.jpg",

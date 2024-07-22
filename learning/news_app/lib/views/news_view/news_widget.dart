@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:news_app/models/news_model.dart';
 
 class NewsWidget extends StatelessWidget {
-  NewsWidget({required this.news, super.key});
+  const NewsWidget({required this.news, super.key});
 
-  NewsModel news;
+  final NewsModel news;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +21,8 @@ class NewsWidget extends StatelessWidget {
               child: news.image == null
                   ? Image.asset("assets/jajaja.jpg",
                       fit: BoxFit.cover, width: double.infinity, height: 160)
-                  : Image.network(
-                      news.image ??
-                          "https://nypost.com/wp-content/uploads/sites/2/2024/07/newspress-collage-41t89v8e7-1720357388061.jpg?quality=75&strip=all&1720343083&w=1024",
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                      height: 160),
+                  : Image.network(news.image!,
+                      fit: BoxFit.cover, width: double.infinity, height: 160),
             ),
             const SizedBox(
               height: 10,

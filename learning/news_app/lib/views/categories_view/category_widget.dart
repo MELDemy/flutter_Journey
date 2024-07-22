@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/Screens/screen1.dart';
+import 'package:news_app/Screens/categotry_page.dart';
 import 'package:news_app/models/category_model.dart';
 
 class CategoryWidget extends StatelessWidget {
@@ -15,8 +15,7 @@ class CategoryWidget extends StatelessWidget {
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return CategoryPage(
-              title: category.text,
-              news: category.news,
+              category: category.category,
             );
           }));
         },
@@ -32,7 +31,7 @@ class CategoryWidget extends StatelessWidget {
           ),
           alignment: Alignment.center,
           child: Text(
-            category.text,
+            category.category,
             style: const TextStyle(
               fontSize: 20,
               color: Colors.white,
