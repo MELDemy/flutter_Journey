@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/screens/search_screen.dart';
 
-class noWeatherBody extends StatelessWidget {
-  const noWeatherBody({super.key});
+class NoWeatherBody extends StatelessWidget {
+  const NoWeatherBody({required this.pushSearchScreen, super.key});
 
-  pushSearchScreen(context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const SearchScreen()));
-  }
+  final VoidCallback pushSearchScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +23,7 @@ class noWeatherBody extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              pushSearchScreen(context);
+              pushSearchScreen();
             },
           ),
         ],

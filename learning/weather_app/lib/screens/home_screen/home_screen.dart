@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/screens/home_screen/info_weather_body.dart';
+import 'package:weather_app/screens/home_screen/no_weather_body.dart';
 import 'package:weather_app/screens/search_screen.dart';
 
 class NoWeatherScreen extends StatelessWidget {
@@ -30,7 +30,9 @@ class NoWeatherScreen extends StatelessWidget {
         ],
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: InfoWeatherBody(),
+      body: NoWeatherBody(pushSearchScreen: () {
+        pushSearchScreen(context);
+      }),
     );
   }
 }

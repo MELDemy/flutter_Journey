@@ -9,13 +9,13 @@ class InfoWeatherBody extends StatefulWidget {
 }
 
 class _InfoWeatherBodyState extends State<InfoWeatherBody> {
-  Weather weatherInfo = Weather(
+  WeatherDM weatherInfo = WeatherDM(
     location: "ALexandria",
     updatedTime: "12pm",
     image: "assets/images/clear.png",
-    temp: "17",
-    maxTemp: "24",
-    minTemp: "5",
+    temp: 17,
+    maxTemp: 24,
+    minTemp: 5,
     weather: "Light Rain",
   );
 
@@ -35,7 +35,7 @@ class _InfoWeatherBodyState extends State<InfoWeatherBody> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Image.asset(weatherInfo.image),
-                WeatherText(weatherInfo.temp),
+                WeatherText("${weatherInfo.temp}"),
                 Column(
                   children: [
                     Text("Max temp : ${weatherInfo.maxTemp}"),

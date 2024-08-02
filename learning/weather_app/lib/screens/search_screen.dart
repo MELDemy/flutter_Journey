@@ -12,14 +12,22 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow,
-        title: Text(
-          "Search a city",
-        ),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text("Search a city"),
       ),
       body: Center(
-          child: TextField(
-        style: TextStyle(),
+          child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: TextField(
+          decoration: InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+              labelText: "Search",
+              hintText: "Enter city name",
+              border:
+                  OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+              suffixIcon: Icon(Icons.search)),
+        ),
       )),
     );
   }
