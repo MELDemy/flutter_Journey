@@ -18,12 +18,12 @@ class WeatherService {
       WeatherDM weatherDM = WeatherDM.fromJson(response.data);
       return weatherDM;
     } on DioException catch (e) {
-      log(e.toString());
-      final String errMessage = "Oops There was an error. try again later!!";
-      throw Exception(errMessage);
+      final String errMessage = e.response?.data['error']['message'] ??
+          "Oops There was an error. try again later!!";
+      throw Exception(e);
     } catch (e) {
       log(e.toString());
-      final String errMessage = "Oops There was an error. try again later!!";
+      const String errMessage = "Oops There was an error. try again later!!";
       throw Exception(errMessage);
     }
   }

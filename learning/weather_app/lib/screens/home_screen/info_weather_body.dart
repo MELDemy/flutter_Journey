@@ -1,26 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/models/weather_dm.dart';
 
-class InfoWeatherBody extends StatefulWidget {
-  const InfoWeatherBody({super.key});
+class InfoWeatherBody extends StatelessWidget {
+  InfoWeatherBody({super.key});
 
-  @override
-  State<InfoWeatherBody> createState() => _InfoWeatherBodyState();
-}
-
-class _InfoWeatherBodyState extends State<InfoWeatherBody> {
-  WeatherDM weatherInfo = WeatherDM(
-    location: "ALexandria",
-    updatedTime: "12pm",
-    image: "assets/images/clear.png",
-    temp: 17,
-    maxTemp: 24,
-    minTemp: 5,
-    weather: "Light Rain",
-  );
-
+  // WeatherDM(
   @override
   Widget build(BuildContext context) {
+    WeatherDM weatherInfo = BlocProvider.of<GetWeatherCubit>(context).weatherDM;
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
       child: Center(
@@ -34,7 +23,7 @@ class _InfoWeatherBodyState extends State<InfoWeatherBody> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(weatherInfo.image),
+                Image.asset("assets/images/clear.png"),
                 WeatherText("${weatherInfo.temp}"),
                 Column(
                   children: [
