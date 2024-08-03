@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NoWeatherBody extends StatelessWidget {
-  const NoWeatherBody({required this.pushSearchScreen, super.key});
+  String? errMsg;
+  NoWeatherBody({this.errMsg, required this.pushSearchScreen, super.key});
 
   final VoidCallback pushSearchScreen;
 
@@ -10,13 +11,16 @@ class NoWeatherBody extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            'there is no weather 😔',
-            style: TextStyle(fontSize: 30),
-          ),
+          errMsg == null
+              ? SizedBox()
+              : Text(
+                  '${errMsg} 😔',
+                  style: TextStyle(fontSize: 18),
+                ),
           TextButton(
-            child: Text(
+            child: const Text(
               'Start searching now 🔍',
               style: TextStyle(
                 fontSize: 30,

@@ -14,8 +14,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("Search a city"),
+        title: const Text("Search a city"),
       ),
       body: Center(
           child: Padding(
@@ -26,7 +25,7 @@ class _SearchScreenState extends State<SearchScreen> {
             getWeatherCubit.getWeather(cityName: cityName);
             Navigator.pop(context);
           },
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
               contentPadding:
                   EdgeInsets.symmetric(vertical: 30, horizontal: 20),
               labelText: "Search",

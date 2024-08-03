@@ -1,43 +1,79 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
+import 'package:weather_app/main.dart';
 import 'package:weather_app/models/weather_dm.dart';
 
 class InfoWeatherBody extends StatelessWidget {
-  InfoWeatherBody({super.key});
+  const InfoWeatherBody({super.key});
 
   // WeatherDM(
   @override
   Widget build(BuildContext context) {
-    WeatherDM weatherInfo = BlocProvider.of<GetWeatherCubit>(context).weatherDM;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-      child: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          WeatherText(weatherInfo.location),
-          Text("Updated at ${weatherInfo.updatedTime}"),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset("assets/images/clear.png"),
-                WeatherText("${weatherInfo.temp}"),
-                Column(
-                  children: [
-                    Text("Max temp : ${weatherInfo.maxTemp}"),
-                    Text("Min temp: ${weatherInfo.minTemp}"),
-                  ],
-                )
-              ],
+    WeatherDM weatherInfo =
+        BlocProvider.of<GetWeatherCubit>(context).weatherDM!;
+    DateTime updatedTime = weatherInfo.updatedTime;
+    MaterialColor gradientColor = getThemeColor(weatherInfo.weather);
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+            colors: [gradientColor, gradientColor[300]!, gradientColor[50]!],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            WeatherText(weatherInfo.location),
+            Text(
+              "Updated at ${updatedTime.hour}:${updatedTime.minute}",
+              style: const TextStyle(fontSize: 18),
             ),
-          ),
-          WeatherText(weatherInfo.weather),
-        ],
-      )),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  NetworkImage(weatherInfo),
+                  WeatherText("${weatherInfo.temp.round()}"),
+                  Column(
+                    children: [
+                      Text("Max temp : ${weatherInfo.maxTemp.round()}"),
+                      Text("Min temp: ${weatherInfo.minTemp.round()}"),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            WeatherText(weatherInfo.weather),
+          ],
+        ),
+      ),
     );
+  }
+
+  Image NetworkImage(WeatherDM weatherInfo) {
+    return weatherInfo.imageUrl == null
+        ? Image.asset("assets/images/clear.png")
+        : Image.network(
+            weatherInfo.imageUrl!,
+            fit: BoxFit.fill,
+            loadingBuilder: (BuildContext context, Widget child,
+                ImageChunkEvent? loadingProgress) {
+              if (loadingProgress == null) return child;
+              return Center(
+                child: CircularProgressIndicator(
+                  value: loadingProgress.expectedTotalBytes != null
+                      ? loadingProgress.cumulativeBytesLoaded /
+                          loadingProgress.expectedTotalBytes!
+                      : null,
+                ),
+              );
+            },
+          );
   }
 }
 
@@ -49,7 +85,7 @@ class WeatherText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+      style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
     );
   }
 }

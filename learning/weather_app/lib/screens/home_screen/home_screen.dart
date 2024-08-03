@@ -20,19 +20,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Weather Details Screen'),
+          title: const Text('Weather Details Screen'),
           actions: [
             IconButton(
               onPressed: () {
                 pushSearchScreen(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.search,
-                color: Colors.black,
+                // color: Colors.black,
               ),
             )
           ],
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
         body: BlocBuilder<GetWeatherCubit, WeatherState>(
           builder: (context, state) {
@@ -41,10 +41,18 @@ class HomeScreen extends StatelessWidget {
                 pushSearchScreen(context);
               });
             } else if (state is InfoWeatherState) {
+              // ignore: prefer_const_constructors
               return InfoWeatherBody();
-            } else {
-              return Text("There was an error");
-            }
+            } else if (state is LodaingState) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is FailureWeatherState) {
+              return NoWeatherBody(
+                  errMsg: state.errorMessage,
+                  pushSearchScreen: () {
+                    pushSearchScreen(context);
+                  });
+            } else
+              return Text("Unexpected error, Please contact the Developer!!");
           },
         ));
   }
