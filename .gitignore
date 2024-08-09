@@ -29,6 +29,6 @@ ios/Flutter/.last_build_id
 build/
 
 
-*/google-services.json
-*/firebase.json
-*/firebase_options.dart
+google-services.json
+firebase.json
+firebase_options.dart
