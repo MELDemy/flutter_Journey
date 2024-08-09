@@ -1,0 +1,34 @@
+# Flutter/Dart/Pub related files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+flutter_*.png
+
+# Specific directories
+ios/Flutter/.last_build_id
+.android/
+.idea/
+
+# Obsolete files
+*.lock
+*.log
+*.orig
+*.rej
+*.so
+*.swp
+*.DS_Store
+
+# IntelliJ related files
+*.iml
+.idea/
+.gradle/
+build/
+
+
+*/google-services.json
+*/firebase.json
+*/firebase_options.dart
