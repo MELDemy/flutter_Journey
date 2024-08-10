@@ -70,36 +70,14 @@ class ChatScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(13),
                 child: TextField(
                   controller: controller,
-                  onSubmitted: (message) {
-                    messagesCollection.add(
-                      {
-                        'message': message,
-                        'createdTime': DateTime.now(),
-                        'id': kEmail
-                      },
-                    ).then((DocumentReference doc) =>
-                        print('DocumentSnapshot added with ID: ${doc.id}'));
-                    controller.clear();
-                  },
+                  onSubmitted: (message) => sendMessage(),
                   decoration: InputDecoration(
                     hintText: "Message",
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: kPrimaryColor),
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                     suffixIcon: IconButton(
-                      onPressed: () {
-                        print("Send message ");
-                        final user = <String, dynamic>{
-                          "first": "Ada",
-                          "last": "Lovelace",
-                          "born": 1815
-                        };
-
-// Add a new document with a generated ID
-                        messagesCollection.add(user).then((DocumentReference
-                                doc) =>
-                            print('DocumentSnapshot added with ID: ${doc.id}'));
-                      },
+                      onPressed: () => sendMessage(),
                       icon: Icon(Icons.send),
                     ),
                     contentPadding: EdgeInsets.all(15), // Internal padding
@@ -111,5 +89,16 @@ class ChatScreen extends StatelessWidget {
         );
       },
     );
+  }
+
+  void sendMessage() {
+    final String message = controller.text.trim();
+    if (message.isNotEmpty) {
+      messagesCollection.add(
+        {'message': message, 'createdTime': DateTime.now(), 'id': kEmail},
+      ).then((DocumentReference doc) =>
+          print('DocumentSnapshot added with ID: ${doc.id}'));
+      controller.clear();
+    }
   }
 }
