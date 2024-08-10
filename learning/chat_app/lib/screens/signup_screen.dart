@@ -1,4 +1,6 @@
 import 'package:chat_app/constants.dart';
+import 'package:chat_app/helper/show_snack_bar.dart';
+import 'package:chat_app/widgets/TappedText.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/custom_textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,7 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: ListView(
               children: [
                 SizedBox(height: 100),
-                Image.asset("assets/images/scholar.png", height: 100),
+                Image.asset(kLogo, height: 100),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -58,13 +60,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: TextStyle(color: Colors.white, fontSize: 24))
                 ]),
                 SizedBox(height: 20),
-                CustomTextField(
+                CustomTextFormField(
                     hintText: "Email",
                     onChanged: (data) {
                       email = data;
                     }),
                 SizedBox(height: 12),
-                CustomTextField(
+                CustomTextFormField(
                     hintText: "Password",
                     onChanged: (data) {
                       password = data;
@@ -102,12 +104,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     Text("Already have an account?  ",
                         style: TextStyle(color: Colors.white)),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text("Sign in",
-                            style: TextStyle(color: Color(0xFFC7EDE6)))),
+                    TappedText(onTap: () {
+                      Navigator.pop(context);
+                    }),
                   ],
                 ),
               ],
@@ -116,10 +115,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
-  }
-
-  void showSnackBar(BuildContext context, String text) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
   }
 
   Future<UserCredential> signUp() async {
