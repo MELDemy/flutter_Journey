@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:store_app/components/product_card.dart';
 import 'package:store_app/models/product_model.dart';
 import 'package:store_app/services/get_all_products_service.dart';
+import 'package:store_app/widgets/product_card.dart';
 
 class HomeScreen extends StatelessWidget {
   static String id = 'HomeScreen';
