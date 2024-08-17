@@ -7,7 +7,7 @@ class AddNoteBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: const [
+      children: [
         SizedBox(height: 50),
         CustomTextFormField(label: Text("Title")),
         CustomTextFormField(
