@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note_model.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({required this.cardColor, super.key});
+  CustomCard({required this.cardColor, super.key});
   final Color cardColor;
+  NoteModel noteModel = NoteModel(
+      title: "Flutter tips",
+      description: "this is the description of flutter tips",
+      dateTime: DateTime(2024));
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,16 +25,18 @@ class CustomCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Flutter tips",
-                  style: TextStyle(fontSize: 35),
+                CustomCardText(
+                  text: noteModel.title,
+                  fontsize: 35,
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  "Build your Career with \nTharwat Samy",
-                  style: TextStyle(fontSize: 20),
+                Container(
+                  width: 250,
+                  child: CustomCardText(
+                    text: noteModel.description,
+                  ),
                 ),
               ],
             ),
@@ -47,11 +54,34 @@ class CustomCard extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                Text("1/1/2020"),
+                CustomCardText(
+                    text:
+                        "${noteModel.dateTime.day}/${noteModel.dateTime.month}/${noteModel.dateTime.year}"),
               ],
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CustomCardText extends StatelessWidget {
+  CustomCardText({
+    super.key,
+    required this.text,
+    this.fontsize = 20,
+  });
+
+  final String text;
+  double fontsize;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: fontsize,
+        color: Colors.black,
       ),
     );
   }
