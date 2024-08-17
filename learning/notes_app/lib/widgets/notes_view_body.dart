@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/card.dart';
+import 'package:notes_app/widgets/custom_note_card.dart';
 
 class NotesViewBody extends StatelessWidget {
   const NotesViewBody({super.key, required this.colors});
@@ -11,7 +11,7 @@ class NotesViewBody extends StatelessWidget {
     return ListView.builder(
       itemCount: colors.length,
       itemBuilder: (context, index) {
-        return CustomCard(
+        return CustomNoteCard(
           cardColor: colors[index],
         );
       },
