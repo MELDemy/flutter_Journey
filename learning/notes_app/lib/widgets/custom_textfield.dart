@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField({this.minLines = 1, this.label, super.key});
-  final String? label;
-  final int minLines;
+  CustomTextFormField(
+      {this.minLines = 1,
+      this.label = "",
+      this.onChanged,
+      this.maxLines = 100,
+      super.key});
 
+  final String label;
+  final int minLines, maxLines;
+  final Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -15,21 +21,24 @@ class CustomTextFormField extends StatelessWidget {
         }
         return null;
       },
+      onChanged: onChanged,
       minLines: minLines,
-      maxLines: 100,
+      maxLines: maxLines,
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
-          borderRadius: BorderRadius.circular(8),
-        ),
+        border: BorderLines(),
+        enabledBorder: BorderLines(),
         label: Text(
-          label ?? "",
+          label,
           style: TextStyle(color: kPrimaryColor),
         ),
       ),
+    );
+  }
+
+  OutlineInputBorder BorderLines() {
+    return OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.white),
+      borderRadius: BorderRadius.circular(8),
     );
   }
 }
