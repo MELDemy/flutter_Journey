@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/widgets/custom_card_text.dart';
+import 'package:notes_app/widgets/note_tile.dart';
 
 class CustomNoteCard extends StatelessWidget {
   CustomNoteCard({required this.cardColor, super.key});
@@ -19,32 +21,7 @@ class CustomNoteCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          ListTile(
-            titleAlignment: ListTileTitleAlignment.top,
-            contentPadding: EdgeInsets.only(left: 10),
-            title: CustomCardText(
-              text: noteModel.title,
-              fontsize: 26,
-            ),
-            subtitle: Padding(
-              padding: const EdgeInsets.only(top: 25.0, bottom: 10),
-              child: CustomCardText(
-                text: noteModel.description,
-                fontcolor: Colors.black.withOpacity(.6),
-              ),
-            ),
-            trailing: Padding(
-              padding: const EdgeInsets.only(top: 15.0),
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.delete,
-                  color: Colors.black,
-                  size: 35,
-                ),
-              ),
-            ),
-          ),
+          NoteTile(noteModel: noteModel),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: CustomCardText(
@@ -56,26 +33,6 @@ class CustomNoteCard extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class CustomCardText extends StatelessWidget {
-  CustomCardText({
-    super.key,
-    required this.text,
-    this.fontsize = 20,
-    this.fontcolor = Colors.black,
-  });
-  final Color fontcolor;
-  final String text;
-  double fontsize;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(fontSize: fontsize, color: fontcolor),
     );
   }
 }
