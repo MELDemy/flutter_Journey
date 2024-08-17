@@ -27,7 +27,7 @@ class CustomCard extends StatelessWidget {
               children: [
                 CustomCardText(
                   text: noteModel.title,
-                  fontsize: 35,
+                  fontsize: 26,
                 ),
                 SizedBox(
                   height: 10,
@@ -36,6 +36,7 @@ class CustomCard extends StatelessWidget {
                   width: 250,
                   child: CustomCardText(
                     text: noteModel.description,
+                    fontcolor: Colors.black.withOpacity(.6),
                   ),
                 ),
               ],
@@ -55,8 +56,10 @@ class CustomCard extends StatelessWidget {
                   ),
                 ),
                 CustomCardText(
-                    text:
-                        "${noteModel.dateTime.day}/${noteModel.dateTime.month}/${noteModel.dateTime.year}"),
+                  text:
+                      "${noteModel.dateTime.day}/${noteModel.dateTime.month}/${noteModel.dateTime.year}",
+                  fontcolor: Colors.black.withOpacity(.6),
+                ),
               ],
             )
           ],
@@ -66,23 +69,27 @@ class CustomCard extends StatelessWidget {
   }
 }
 
-class CustomCardText extends StatelessWidget {
+class CustomCardText extends StatefulWidget {
   CustomCardText({
     super.key,
     required this.text,
-    this.fontsize = 20,
+    this.fontsize = 18,
+    this.fontcolor = Colors.black,
   });
-
+  final Color fontcolor;
   final String text;
   double fontsize;
+
+  @override
+  State<CustomCardText> createState() => _CustomCardTextState();
+}
+
+class _CustomCardTextState extends State<CustomCardText> {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
-      style: TextStyle(
-        fontSize: fontsize,
-        color: Colors.black,
-      ),
+      widget.text,
+      style: TextStyle(fontSize: widget.fontsize, color: widget.fontcolor),
     );
   }
 }
