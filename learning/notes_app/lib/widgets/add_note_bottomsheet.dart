@@ -10,14 +10,16 @@ class AddNoteBottomSheet extends StatefulWidget {
 }
 
 class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
-  late String title, description;
+  String? title, description;
 
   final GlobalKey<FormState> formKey = GlobalKey();
 
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
+      autovalidateMode: autovalidateMode,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
@@ -30,7 +32,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                     CustomTextFormField(
                       label: "Title",
                       maxLines: 1,
-                      onChanged: (value) {
+                      onSaved: (value) {
                         this.title = value;
                       },
                     ),
@@ -38,7 +40,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                     CustomTextFormField(
                         label: "Content",
                         minLines: 5,
-                        onChanged: (value) {
+                        onSaved: (value) {
                           this.description = value;
                         }),
                   ],
@@ -47,13 +49,17 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
             ),
             Container(
                 margin: EdgeInsets.only(bottom: 25, top: 10),
-                width: double.infinity,
+                width: MediaQuery.of(context).size.width,
                 child: CustomTextButton(
                   text: "Add",
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      print(title + "\n" + description);
+                      print("$title\n$description");
+                      formKey.currentState!.save();
                       Navigator.pop(context);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
                     }
                   },
                 ))

@@ -2,29 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField(
-      {this.minLines = 1,
-      this.initialValue,
-      this.label = "",
-      this.onChanged,
-      this.maxLines = 100,
-      super.key});
+  CustomTextFormField({
+    this.initialValue,
+    this.label = "",
+    this.onSaved,
+    this.minLines = 1,
+    this.maxLines = 100,
+    super.key,
+  });
 
   final String label;
   final String? initialValue;
   final int minLines, maxLines;
-  final Function(String)? onChanged;
+  final Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: (data) {
-        if (data!.isEmpty) {
+        if (data?.trim().isEmpty ?? true) {
           return "Can't be empty";
         }
         return null;
       },
       initialValue: initialValue,
-      onChanged: onChanged,
+      onSaved: onSaved,
       minLines: minLines,
       maxLines: maxLines,
       decoration: InputDecoration(

@@ -13,15 +13,16 @@ class EditNoteBody extends StatefulWidget {
 }
 
 class _EditNoteBodyState extends State<EditNoteBody> {
-  late String title = widget.noteModel.title;
-  late String description = widget.noteModel.description;
+  late String? title = widget.noteModel.title;
+  late String? description = widget.noteModel.description;
 
   final GlobalKey<FormState> formKey = GlobalKey();
-
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
+      autovalidateMode: autovalidateMode,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
@@ -35,7 +36,7 @@ class _EditNoteBodyState extends State<EditNoteBody> {
                       initialValue: widget.noteModel.title,
                       label: "Title",
                       maxLines: 1,
-                      onChanged: (value) {
+                      onSaved: (value) {
                         this.title = value;
                       },
                     ),
@@ -44,7 +45,7 @@ class _EditNoteBodyState extends State<EditNoteBody> {
                         initialValue: widget.noteModel.description,
                         label: "Content",
                         minLines: 5,
-                        onChanged: (value) {
+                        onSaved: (value) {
                           this.description = value;
                         }),
                   ],
@@ -53,13 +54,17 @@ class _EditNoteBodyState extends State<EditNoteBody> {
             ),
             Container(
                 margin: EdgeInsets.only(bottom: 25, top: 10),
-                width: double.infinity,
+                width: MediaQuery.of(context).size.width,
                 child: CustomTextButton(
                   text: "Edit",
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      print(title + "\n" + description);
+                      print("$title\n$description");
+                      formKey.currentState!.save();
                       Navigator.pop(context);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
                     }
                   },
                 ))
