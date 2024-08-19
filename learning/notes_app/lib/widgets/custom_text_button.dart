@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
 class CustomTextButton extends StatelessWidget {
-  const CustomTextButton({this.onPressed, super.key});
+  const CustomTextButton({required this.text, this.onPressed, super.key});
 
   final VoidCallback? onPressed;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onPressed,
       child: Text(
-        "Add",
+        text,
         style: TextStyle(fontSize: 18),
       ),
       style: ButtonStyle(

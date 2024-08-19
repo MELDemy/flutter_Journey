@@ -31,7 +31,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                       label: "Title",
                       maxLines: 1,
                       onChanged: (value) {
-                        title = value;
+                        this.title = value;
                       },
                     ),
                     SizedBox(height: 15),
@@ -39,7 +39,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                         label: "Content",
                         minLines: 5,
                         onChanged: (value) {
-                          description = value;
+                          this.description = value;
                         }),
                   ],
                 ),
@@ -49,6 +49,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                 margin: EdgeInsets.only(bottom: 25, top: 10),
                 width: double.infinity,
                 child: CustomTextButton(
+                  text: "Add",
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       print(title + "\n" + description);

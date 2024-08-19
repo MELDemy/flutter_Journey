@@ -4,12 +4,14 @@ import 'package:notes_app/constants.dart';
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField(
       {this.minLines = 1,
+      this.initialValue,
       this.label = "",
       this.onChanged,
       this.maxLines = 100,
       super.key});
 
   final String label;
+  final String? initialValue;
   final int minLines, maxLines;
   final Function(String)? onChanged;
   @override
@@ -21,6 +23,7 @@ class CustomTextFormField extends StatelessWidget {
         }
         return null;
       },
+      initialValue: initialValue,
       onChanged: onChanged,
       minLines: minLines,
       maxLines: maxLines,
