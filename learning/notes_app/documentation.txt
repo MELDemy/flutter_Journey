@@ -1,0 +1,9 @@
+1- build custom appbar
+2- constants file
+3- build the note card  (Container - col - tileList - text)
+4- build the listView.builder
+5- create note model
+6- bottom sheet (Container - col - singleChildScrollView(col) to avoid textfield clear bug - textButton)
+7- create edit note view
+8- add Hive database 
+9- create cubit and cubit listener 
