@@ -5,14 +5,15 @@ import 'package:notes_app/widgets/custom_card_text.dart';
 import 'package:notes_app/widgets/note_tile.dart';
 
 class CustomNoteCard extends StatelessWidget {
-  CustomNoteCard({required this.cardColor, super.key});
-  final Color cardColor;
-  final NoteModel noteModel = NoteModel(
-    title: "Flutter tips",
-    description: "this is the description of flutter tips",
-    dateTime: DateTime(2024),
-    color: Colors.red.value,
-  );
+  const CustomNoteCard({required this.noteModel, super.key});
+  // final Color cardColor;
+  final NoteModel noteModel;
+  // = NoteModel(
+  //   title: "Flutter tips",
+  //   description: "this is the description of flutter tips",
+  //   dateTime: DateTime(2024),
+  //   color: Colors.red.value,
+  // );
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -27,7 +28,8 @@ class CustomNoteCard extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-            color: cardColor, borderRadius: BorderRadius.circular(16)),
+            color: Color(noteModel.color),
+            borderRadius: BorderRadius.circular(16)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
