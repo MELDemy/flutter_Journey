@@ -11,6 +11,7 @@ class CustomNoteCard extends StatelessWidget {
     title: "Flutter tips",
     description: "this is the description of flutter tips",
     dateTime: DateTime(2024),
+    color: Colors.red.value,
   );
   @override
   Widget build(BuildContext context) {

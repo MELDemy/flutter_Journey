@@ -6,7 +6,7 @@ import 'package:notes_app/widgets/notes_view_body.dart';
 
 class NotesView extends StatelessWidget {
   static String id = "HomeScreen";
-  NotesView({super.key});
+  const NotesView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,17 @@ class NotesView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
+            isScrollControlled: true,
             backgroundColor: backgroundColor,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             context: context,
             builder: (context) {
-              return AddNoteBottomSheet();
+              return Padding(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: AddNoteBottomSheet(),
+              );
             },
           );
         },
