@@ -18,7 +18,17 @@ class AddNoteBottomSheet extends StatelessWidget {
           }
 
           if (state is AddNoteSuccess) {
-            BlocProvider.of<NotesCubit>(context).getNotes();
+            NotesCubit blocProvider = BlocProvider.of<NotesCubit>(context);
+            blocProvider.getNotes();
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("Note added Successfully"),
+              action: SnackBarAction(
+                label: "Undo",
+                onPressed: () {
+                  blocProvider.deleteNote(state.noteModel);
+                },
+              ),
+            ));
             Navigator.pop(context);
           }
         },

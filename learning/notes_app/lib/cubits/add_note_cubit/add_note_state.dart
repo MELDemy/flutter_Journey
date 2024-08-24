@@ -7,7 +7,11 @@ final class AddNoteInitial extends AddNoteState {}
 
 final class AddNoteLoading extends AddNoteState {}
 
-final class AddNoteSuccess extends AddNoteState {}
+final class AddNoteSuccess extends AddNoteState {
+  final NoteModel noteModel;
+
+  AddNoteSuccess(this.noteModel);
+}
 
 final class AddNoteFailure extends AddNoteState {
   final String errMsg;

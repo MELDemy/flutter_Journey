@@ -10,7 +10,7 @@ class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
 
   getNotes() {
-    emit(NotesLoading());
+    // emit(NotesLoading());
     try {
       final Box<NoteModel> notesBox = Hive.box<NoteModel>(kNotesBox);
       List<NoteModel> notes = notesBox.values.toList();
@@ -21,7 +21,7 @@ class NotesCubit extends Cubit<NotesState> {
   }
 
   deleteNote(NoteModel noteModel) async {
-    emit(NotesLoading());
+    // emit(NotesLoading());
     try {
       await noteModel.delete();
       getNotes();
