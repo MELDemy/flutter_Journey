@@ -33,6 +33,7 @@ class NotesView extends StatelessWidget {
       appBar: CustomAppBar(
         title: "Notes",
         icon: Icons.search,
+        onIconPressed: () {},
       ),
       body: NotesViewBody(),
     );
