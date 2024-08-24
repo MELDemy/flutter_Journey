@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomCardText extends StatelessWidget {
-  CustomCardText({
+  const CustomCardText({
     super.key,
     required this.text,
     this.fontsize = 20,
@@ -9,7 +9,7 @@ class CustomCardText extends StatelessWidget {
   });
   final Color fontcolor;
   final String text;
-  double fontsize;
+  final double fontsize;
 
   @override
   Widget build(BuildContext context) {

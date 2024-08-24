@@ -27,8 +27,8 @@ class _EditNoteViewState extends State<EditNoteView> {
       appBar: CustomAppBar(
         title: "Edit Note",
         icon: Icons.check,
-        onIconPressed: () {
-          editNote(context);
+        onIconPressed: () async {
+          await editNote(context);
         },
       ),
       body: Form(
@@ -65,8 +65,8 @@ class _EditNoteViewState extends State<EditNoteView> {
               ),
               CustomTextButton(
                 text: "Edit",
-                onPressed: () {
-                  editNote(context);
+                onPressed: () async {
+                  await editNote(context);
                 },
               )
             ],
@@ -76,12 +76,14 @@ class _EditNoteViewState extends State<EditNoteView> {
     );
   }
 
-  void editNote(BuildContext context) {
+  Future<void> editNote(BuildContext context) async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      print("$title\n$description");
+
       widget.noteModel.title = title!;
       widget.noteModel.description = description!;
+      await widget.noteModel.save();
+
       BlocProvider.of<NotesCubit>(context).getNotes();
       Navigator.pop(context);
     } else {
