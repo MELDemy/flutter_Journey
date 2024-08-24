@@ -22,7 +22,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
     return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
         if (state is NotesFailure) {
-          return Center(
+          return const Center(
             child: Text("There was an error Please try again"),
           );
         } else if (state is NotesSuccess) {
@@ -39,7 +39,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
             ),
           );
         } else {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }

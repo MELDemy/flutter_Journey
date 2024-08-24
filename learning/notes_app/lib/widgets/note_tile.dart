@@ -16,7 +16,7 @@ class NoteTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       titleAlignment: ListTileTitleAlignment.top,
-      contentPadding: EdgeInsets.only(left: 10),
+      contentPadding: const EdgeInsets.only(left: 10),
       title: CustomCardText(text: noteModel.title, fontsize: 26),
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 25.0, bottom: 10),
@@ -31,7 +31,7 @@ class NoteTile extends StatelessWidget {
           onPressed: () {
             BlocProvider.of<NotesCubit>(context).deleteNote(noteModel);
           },
-          icon: Icon(Icons.delete, color: Colors.black, size: 35),
+          icon: const Icon(Icons.delete, color: Colors.black, size: 35),
         ),
       ),
     );

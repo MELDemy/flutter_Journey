@@ -45,22 +45,22 @@ class _EditNoteViewState extends State<EditNoteView> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       CustomTextFormField(
                         initialValue: widget.noteModel.title,
                         label: "Title",
                         maxLines: 1,
                         onSaved: (value) {
-                          this.title = value;
+                          title = value;
                         },
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       CustomTextFormField(
                           initialValue: widget.noteModel.description,
                           label: "Content",
                           minLines: 5,
                           onSaved: (value) {
-                            this.description = value;
+                            description = value;
                           }),
                     ],
                   ),

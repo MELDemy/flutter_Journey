@@ -26,7 +26,7 @@ class _AddNoteSheetState extends State<AddNoteSheet> {
       key: formKey,
       autovalidateMode: autoValidateMode,
       child: Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           right: 15.0,
           left: 15,
         ),
@@ -41,27 +41,27 @@ class _AddNoteSheetState extends State<AddNoteSheet> {
                           (MediaQuery.of(context).size.height / 2) - 100),
                   child: Column(
                     children: [
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       CustomTextFormField(
                         label: "Title",
                         maxLines: 1,
                         onSaved: (value) {
-                          this.title = value;
+                          title = value;
                         },
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       CustomTextFormField(
                         label: "Content",
                         minLines: 5,
                         onSaved: (value) {
-                          this.description = value;
+                          description = value;
                         },
                       ),
                     ],
                   ),
                 ),
               ),
-              ColorPickerList(),
+              const ColorPickerList(),
               BlocBuilder<AddNoteCubit, AddNoteState>(
                 builder: (context, state) {
                   return CustomTextButton(

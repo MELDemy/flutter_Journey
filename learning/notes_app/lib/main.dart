@@ -32,10 +32,10 @@ class NotesApp extends StatelessWidget {
           scaffoldBackgroundColor: backgroundColor,
           colorScheme: ColorScheme.dark(primary: kPrimaryColor),
           fontFamily: 'Poppins',
-          appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
+          appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
         ),
         routes: {
-          NotesView.id: (context) => NotesView(),
+          NotesView.id: (context) => const NotesView(),
         },
         initialRoute: NotesView.id,
       ),

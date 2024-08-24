@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         title,
-        style: TextStyle(fontSize: 28),
+        style: const TextStyle(fontSize: 28),
       ),
       actions: [
         Padding(
@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             style: ButtonStyle(
               backgroundColor:
-                  MaterialStateColor.resolveWith((states) => Color(0xFF3B3B3B)),
+                  MaterialStateColor.resolveWith((states) => const Color(0xFF3B3B3B)),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),

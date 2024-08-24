@@ -12,24 +12,12 @@ class CustomTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 25, top: 10),
+      margin: const EdgeInsets.only(bottom: 25, top: 10),
       width: MediaQuery.of(context).size.width,
       child: TextButton(
         onPressed: onPressed,
-        child: isLoading
-            ? SizedBox(
-                height: 20,
-                width: 20,
-                child: CircularProgressIndicator(
-                  color: Colors.black,
-                ),
-              )
-            : Text(
-                text,
-                style: TextStyle(fontSize: 18),
-              ),
         style: ButtonStyle(
-          padding: MaterialStateProperty.all(EdgeInsets.all(0)),
+          padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
           backgroundColor:
               MaterialStateColor.resolveWith((states) => kPrimaryColor),
           foregroundColor:
@@ -40,6 +28,18 @@ class CustomTextButton extends StatelessWidget {
             ),
           ),
         ),
+        child: isLoading
+            ? const SizedBox(
+                height: 20,
+                width: 20,
+                child: CircularProgressIndicator(
+                  color: Colors.black,
+                ),
+              )
+            : Text(
+                text,
+                style: const TextStyle(fontSize: 18),
+              ),
       ),
     );
   }

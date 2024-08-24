@@ -26,8 +26,8 @@ class CustomNoteCard extends StatelessWidget {
         );
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-        padding: EdgeInsets.all(16),
+        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
             color: Color(noteModel.color ?? 42941980),
             borderRadius: BorderRadius.circular(16)),
@@ -38,7 +38,7 @@ class CustomNoteCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: CustomCardText(
-                text: "${DateFormat('yyyy-MM-dd').format(noteModel.dateTime)}",
+                text: DateFormat('yyyy-MM-dd').format(noteModel.dateTime),
                 fontcolor: Colors.black.withOpacity(.6),
                 fontsize: 16,
               ),

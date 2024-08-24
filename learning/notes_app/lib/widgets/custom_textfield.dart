@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField({
+  const CustomTextFormField({
     this.initialValue,
     this.label = "",
     this.onSaved,
@@ -41,7 +41,7 @@ class CustomTextFormField extends StatelessWidget {
 
   OutlineInputBorder BorderLines() {
     return OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.white),
+      borderSide: const BorderSide(color: Colors.white),
       borderRadius: BorderRadius.circular(8),
     );
   }

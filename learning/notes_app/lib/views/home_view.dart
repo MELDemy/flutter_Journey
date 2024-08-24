@@ -23,19 +23,19 @@ class NotesView extends StatelessWidget {
               return Padding(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddNoteBottomSheet(),
+                child: const AddNoteBottomSheet(),
               );
             },
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       appBar: CustomAppBar(
         title: "Notes",
         icon: Icons.search,
         onIconPressed: () {},
       ),
-      body: NotesViewBody(),
+      body: const NotesViewBody(),
     );
   }
 }

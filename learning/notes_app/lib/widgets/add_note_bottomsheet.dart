@@ -21,7 +21,7 @@ class AddNoteBottomSheet extends StatelessWidget {
             NotesCubit blocProvider = BlocProvider.of<NotesCubit>(context);
             blocProvider.getNotes();
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text("Note added Successfully"),
+              content: const Text("Note added Successfully"),
               action: SnackBarAction(
                 label: "Undo",
                 onPressed: () {
@@ -35,7 +35,7 @@ class AddNoteBottomSheet extends StatelessWidget {
         builder: (context, state) {
           return AbsorbPointer(
             absorbing: state is AddNoteLoading,
-            child: AddNoteSheet(),
+            child: const AddNoteSheet(),
           );
         },
       ),
