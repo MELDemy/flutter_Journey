@@ -6,7 +6,7 @@ import 'package:notes_app/widgets/note_tile.dart';
 
 class CustomNoteCard extends StatelessWidget {
   const CustomNoteCard({required this.noteModel, super.key});
-  // final Color cardColor;
+
   final NoteModel noteModel;
   // = NoteModel(
   //   title: "Flutter tips",
@@ -16,6 +16,8 @@ class CustomNoteCard extends StatelessWidget {
   // );
   @override
   Widget build(BuildContext context) {
+    int noteColor = noteModel.color ?? 42941980;
+    print("Color ${noteModel.color}");
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -28,8 +30,7 @@ class CustomNoteCard extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-            color: Color(noteModel.color),
-            borderRadius: BorderRadius.circular(16)),
+            color: Color(noteColor), borderRadius: BorderRadius.circular(16)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [

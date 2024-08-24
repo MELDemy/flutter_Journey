@@ -17,13 +17,18 @@ class _AddNoteSheetState extends State<AddNoteSheet> {
 
   final GlobalKey<FormState> formKey = GlobalKey();
 
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+  final List<int> colors = [
+    const Color(0xFFFFCD7A).value,
+    const Color(0xFFE7E896).value,
+    const Color(0xFF76D6EE).value,
+    const Color(0xFFE2A7EA).value,
+  ];
   @override
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      autovalidateMode: autovalidateMode,
+      autovalidateMode: autoValidateMode,
       child: Padding(
         padding: EdgeInsets.only(
           right: 15.0,
@@ -72,13 +77,12 @@ class _AddNoteSheetState extends State<AddNoteSheet> {
                           title: title!,
                           description: description!,
                           dateTime: DateTime.now(),
-                          color: Colors.red.value,
                         );
                         BlocProvider.of<AddNoteCubit>(context)
                             .addNote(noteModel);
                         // Navigator.pop(context);
                       } else {
-                        autovalidateMode = AutovalidateMode.always;
+                        autoValidateMode = AutovalidateMode.always;
                         setState(() {});
                       }
                     },

@@ -11,12 +11,6 @@ class NotesViewBody extends StatefulWidget {
 }
 
 class _NotesViewBodyState extends State<NotesViewBody> {
-  final List<Color> colors = [
-    const Color(0xFFFFCD7A),
-    const Color(0xFFE7E896),
-    const Color(0xFF76D6EE),
-    const Color(0xFFE2A7EA),
-  ];
   @override
   void initState() {
     BlocProvider.of<NotesCubit>(context).getNotes();
@@ -37,6 +31,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
             child: ListView.builder(
               itemCount: state.notes.length,
               itemBuilder: (context, index) {
+                print("List builder color : ${state.notes[index].color}");
                 return CustomNoteCard(
                   noteModel: state.notes[index],
                 );
