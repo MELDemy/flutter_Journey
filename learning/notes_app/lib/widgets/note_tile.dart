@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/note_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_card_text.dart';
 
@@ -26,7 +28,9 @@ class NoteTile extends StatelessWidget {
       trailing: Padding(
         padding: const EdgeInsets.only(top: 15.0),
         child: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            BlocProvider.of<NotesCubit>(context).deleteNote(noteModel);
+          },
           icon: Icon(Icons.delete, color: Colors.black, size: 35),
         ),
       ),

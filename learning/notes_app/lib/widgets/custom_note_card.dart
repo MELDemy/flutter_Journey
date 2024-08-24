@@ -16,21 +16,25 @@ class CustomNoteCard extends StatelessWidget {
   // );
   @override
   Widget build(BuildContext context) {
-    int noteColor = noteModel.color ?? 42941980;
-    print("Color ${noteModel.color}");
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return EditNoteView(
-            noteModel: noteModel,
-          );
-        }));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return EditNoteView(
+                noteModel: noteModel,
+              );
+            },
+          ),
+        );
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-            color: Color(noteColor), borderRadius: BorderRadius.circular(16)),
+            color: Color(noteModel.color ?? 42941980),
+            borderRadius: BorderRadius.circular(16)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
