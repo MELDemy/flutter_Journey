@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubits/note_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/widgets/color_picker_list.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
 import 'package:notes_app/widgets/custom_text_button.dart';
 import 'package:notes_app/widgets/custom_textfield.dart';
@@ -16,11 +18,12 @@ class EditNoteView extends StatefulWidget {
 }
 
 class _EditNoteViewState extends State<EditNoteView> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+
   late String? title = widget.noteModel.title;
   late String? description = widget.noteModel.description;
 
-  final GlobalKey<FormState> formKey = GlobalKey();
-  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,6 +66,7 @@ class _EditNoteViewState extends State<EditNoteView> {
                   ),
                 ),
               ),
+              ColorPickerEditView(noteModel: widget.noteModel),
               CustomTextButton(
                 text: "Edit",
                 onPressed: () async {
@@ -90,5 +94,52 @@ class _EditNoteViewState extends State<EditNoteView> {
       autoValidateMode = AutovalidateMode.always;
       setState(() {});
     }
+  }
+}
+
+class ColorPickerEditView extends StatefulWidget {
+  const ColorPickerEditView({super.key, required this.noteModel});
+
+  final NoteModel noteModel;
+  @override
+  State<ColorPickerEditView> createState() => _ColorPickerEditView();
+}
+
+class _ColorPickerEditView extends State<ColorPickerEditView> {
+  final double _radius = 30;
+  late int currentIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    currentIndex = kColorsList.indexOf(Color(widget.noteModel.color));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15),
+      child: SizedBox(
+        height: _radius * 2,
+        child: ListView.builder(
+          itemCount: kColorsList.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                currentIndex = index;
+                widget.noteModel.color = kColorsList[index].value;
+                setState(() {});
+              },
+              child: ColorItem(
+                radius: _radius,
+                color: kColorsList[index],
+                isSelected: currentIndex == index,
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
 }
