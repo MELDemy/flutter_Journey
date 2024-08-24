@@ -9,11 +9,10 @@ part 'notes_state.dart';
 class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
 
-  final Box<NoteModel> notesBox = Hive.box<NoteModel>(kNotesBox);
-
   getNotes() {
     emit(NotesLoading());
     try {
+      final Box<NoteModel> notesBox = Hive.box<NoteModel>(kNotesBox);
       List<NoteModel> notes = notesBox.values.toList();
       emit(NotesSuccess(notes));
     } catch (e) {
@@ -24,7 +23,7 @@ class NotesCubit extends Cubit<NotesState> {
   deleteNote(NoteModel noteModel) async {
     emit(NotesLoading());
     try {
-      await notesBox.delete(noteModel.key);
+      await noteModel.delete();
       getNotes();
     } catch (e) {
       emit(NotesFailure(errMsg: e.toString()));

@@ -12,7 +12,7 @@ class NoteModel extends HiveObject {
   @HiveField(1)
   String description;
   @HiveField(2)
-  DateTime dateTime;
+  final DateTime dateTime;
   @HiveField(3)
   int? color;
 

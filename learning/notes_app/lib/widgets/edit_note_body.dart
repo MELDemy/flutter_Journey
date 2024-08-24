@@ -52,22 +52,19 @@ class _EditNoteBodyState extends State<EditNoteBody> {
                 ),
               ),
             ),
-            Container(
-                margin: EdgeInsets.only(bottom: 25, top: 10),
-                width: MediaQuery.of(context).size.width,
-                child: CustomTextButton(
-                  text: "Edit",
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      print("$title\n$description");
-                      formKey.currentState!.save();
-                      Navigator.pop(context);
-                    } else {
-                      autovalidateMode = AutovalidateMode.always;
-                      setState(() {});
-                    }
-                  },
-                ))
+            CustomTextButton(
+              text: "Edit",
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  print("$title\n$description");
+                  formKey.currentState!.save();
+                  Navigator.pop(context);
+                } else {
+                  autovalidateMode = AutovalidateMode.always;
+                  setState(() {});
+                }
+              },
+            )
           ],
         ),
       ),
