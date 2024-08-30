@@ -6,7 +6,6 @@ import 'package:chat_app/screens/signup_screen.dart';
 import 'package:chat_app/widgets/TappedText.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/custom_textfield.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -84,7 +83,7 @@ class SignInScreen extends StatelessWidget {
                     SizedBox(height: 35),
                     CustomButton(
                       text: "Sign In",
-                      ontap: () async {
+                      onTap: () async {
                         if (formKey.currentState!.validate()) {
                           BlocProvider.of<SignInCubit>(context)
                               .signIn(email: email!, password: password!);
@@ -100,6 +99,7 @@ class SignInScreen extends StatelessWidget {
                           style: TextStyle(color: Colors.white),
                         ),
                         TappedText(
+                          text: "Sign Up",
                           onTap: () {
                             Navigator.pushNamed(context, SignUpScreen.id);
                           },
@@ -113,13 +113,6 @@ class SignInScreen extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-
-  Future<UserCredential> signIn() async {
-    return await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: email!,
-      password: password!,
     );
   }
 }

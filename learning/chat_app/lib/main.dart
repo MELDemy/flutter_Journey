@@ -1,5 +1,6 @@
 import 'package:chat_app/constants.dart';
 import 'package:chat_app/cubits/signin_cubit/sign_in_cubit.dart';
+import 'package:chat_app/cubits/signup_cubit/sign_up_cubit.dart';
 import 'package:chat_app/firebase_options.dart';
 import 'package:chat_app/screens/chat_screen.dart';
 import 'package:chat_app/screens/signin_screen.dart';
@@ -22,8 +23,15 @@ class ChatApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SignInCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SignInCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SignUpCubit(),
+        ),
+      ],
       child: MaterialApp(
         title: 'Chat App',
         theme: ThemeData(

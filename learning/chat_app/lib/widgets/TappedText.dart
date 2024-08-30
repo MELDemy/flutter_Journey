@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TappedText extends StatelessWidget {
-  TappedText({this.onTap, super.key});
-  VoidCallback? onTap;
+  const TappedText({this.onTap, super.key, required this.text});
+  final VoidCallback? onTap;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Text(
-        "Sign up",
-        style: TextStyle(color: Color(0xFFC7EDE6)),
+        text,
+        style: const TextStyle(color: Color(0xFFC7EDE6)),
       ),
     );
   }
