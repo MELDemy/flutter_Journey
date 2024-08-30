@@ -7,28 +7,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-class SignUpScreen extends StatefulWidget {
+class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
 
   static String id = 'SignUpScreen';
 
-  @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
-}
+  late String? email;
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  String? email;
+  late String? password;
 
-  String? password;
-
-  GlobalKey<FormState> formKey = GlobalKey();
+  final GlobalKey<FormState> formKey = GlobalKey();
 
   bool isloading = false;
-
-  isLoading(bool isloading) {
-    this.isloading = isloading;
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   text: "Sign Up",
                   ontap: () async {
                     if (formKey.currentState!.validate()) {
-                      isLoading(true);
+                      // isLoading(true);
                       try {
                         UserCredential userCredential = await signUp();
                         print(userCredential.user!.email);
@@ -94,7 +84,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             context, "There was an error!! Please try again");
                         print("error" + e.toString());
                       }
-                      isLoading(false);
+                      // isLoading(false);
                     }
                   },
                 ),
