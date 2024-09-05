@@ -30,8 +30,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon,
             ),
             style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateColor.resolveWith((states) => const Color(0xFF3B3B3B)),
+              backgroundColor: MaterialStateColor.resolveWith(
+                  (states) => const Color(0xFF3B3B3B)),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
