@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'constants.dart';
 
 void main() {
-  runApp(BooklyApp());
+  runApp(const BooklyApp());
 }
 
 class BooklyApp extends StatelessWidget {
@@ -14,8 +14,12 @@ class BooklyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: kPrimaryColor),
-      home: SplashView(),
+      theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: kPrimaryColor,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.transparent,
+          )),
+      home: const SplashView(),
     );
   }
 }

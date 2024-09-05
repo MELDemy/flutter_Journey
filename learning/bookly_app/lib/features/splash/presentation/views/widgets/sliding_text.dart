@@ -1,4 +1,7 @@
+import 'package:bookly_app/constants.dart';
+import 'package:bookly_app/features/home/presentatation/views/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SlidingText extends StatefulWidget {
   const SlidingText({
@@ -18,6 +21,7 @@ class _SlidingTextState extends State<SlidingText>
   void initState() {
     super.initState();
     initSlidingAnimation();
+    _NavigateToHomeView();
   }
 
   @override
@@ -52,5 +56,12 @@ class _SlidingTextState extends State<SlidingText>
             .animate(animationController);
 
     animationController.forward();
+  }
+
+  void _NavigateToHomeView() {
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.off(const HomeView(),
+          transition: Transition.fadeIn, duration: kTransitionDuration);
+    });
   }
 }
