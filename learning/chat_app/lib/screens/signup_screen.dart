@@ -8,14 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({super.key});
-
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
   static String id = 'SignUpScreen';
 
-  late String? email;
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
 
-  late String? password;
+class _SignUpScreenState extends State<SignUpScreen> {
+  String? email, password;
 
   final GlobalKey<FormState> formKey = GlobalKey();
 
