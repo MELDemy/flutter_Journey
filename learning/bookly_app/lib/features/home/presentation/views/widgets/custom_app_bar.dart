@@ -9,7 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double padding = 16.0;
+    const double padding = 8.0;
     return AppBar(
       title: Padding(
         padding: const EdgeInsets.only(left: padding),
