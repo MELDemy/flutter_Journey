@@ -10,6 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     const double padding = 8.0;
+
     return AppBar(
       title: Padding(
         padding: const EdgeInsets.only(left: padding),
@@ -22,11 +23,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.only(right: padding),
           child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-                size: 30,
-              )),
+            onPressed: () {},
+            icon: const Icon(
+              Icons.search,
+              size: 30,
+            ),
+          ),
         ),
       ],
     );
