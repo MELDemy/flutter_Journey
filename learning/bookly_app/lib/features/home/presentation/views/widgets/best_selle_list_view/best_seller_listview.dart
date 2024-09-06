@@ -1,10 +1,24 @@
+import 'package:bookly_app/features/home/data/models/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'book_card.dart';
 
-class BestSellerSliverList extends StatelessWidget {
+class BestSellerSliverList extends StatefulWidget {
   const BestSellerSliverList({super.key});
+
+  @override
+  State<BestSellerSliverList> createState() => _BestSellerSliverListState();
+}
+
+class _BestSellerSliverListState extends State<BestSellerSliverList> {
+  final BookModel bookModel = BookModel(
+    title: "Harry Potter and the Goblet of Fire",
+    author: "J.K. Rowling",
+    price: 19.99,
+    rating: 4.8,
+    ratersCount: 2390,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +26,9 @@ class BestSellerSliverList extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           print(index);
-          return const Padding(
+          return Padding(
             padding: kHorizontalPadding,
-            child: BookCard(),
+            child: BookCard(bookModel: bookModel),
           );
         },
         childCount: 100, // Adjust this if you have multiple items

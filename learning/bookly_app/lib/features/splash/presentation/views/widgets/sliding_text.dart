@@ -31,16 +31,17 @@ class _SlidingTextState extends State<SlidingText>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: slidingAnimation,
-        builder: (context, _) {
-          return SlideTransition(
-            position: slidingAnimation,
-            child: const Text(
-              "Read Free Books",
-              textAlign: TextAlign.center,
-            ),
-          );
-        });
+      animation: slidingAnimation,
+      builder: (context, _) {
+        return SlideTransition(
+          position: slidingAnimation,
+          child: const Text(
+            "Read Free Books",
+            textAlign: TextAlign.center,
+          ),
+        );
+      },
+    );
   }
 
   void initSlidingAnimation() {
@@ -60,7 +61,7 @@ class _SlidingTextState extends State<SlidingText>
     Future.delayed(const Duration(seconds: 2), () {
       // Get.off(const HomeView(),
       //     transition: Transition.fadeIn, duration: kTransitionDuration);
-      AppRouter.router.pushReplacement(AppRouter.homeView);
+      AppRouter.router.pushReplacement(AppRouter.kHomeView);
     });
   }
 }
