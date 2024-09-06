@@ -12,46 +12,49 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 125,
-      child: Row(
-        children: [
-          BookImage(),
-          SizedBox(width: 30),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .58,
-                  child: Text(
-                    "Harry Potter and the Goblet of Fire",
-                    style: Styles.textStyle20.copyWith(
-                      fontWeight: FontWeight.normal,
-                      fontFamily: kGTSectraFine,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: SizedBox(
+        height: 125,
+        child: Row(
+          children: [
+            const BookImage(),
+            const SizedBox(width: 30),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * .58,
+                    child: Text(
+                      "Harry Potter and the Goblet of Fire",
+                      style: Styles.textStyle20.copyWith(
+                        fontWeight: FontWeight.normal,
+                        fontFamily: kGTSectraFine,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-                SizedBox(height: 3),
-                Text("J.K. Rowling"),
-                SizedBox(height: 3),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "19.99 € ",
-                      style: Styles.textStyle20,
-                    ),
-                    BookRatingWidget(),
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
+                  const SizedBox(height: 3),
+                  const Text("J.K. Rowling"),
+                  const SizedBox(height: 3),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "19.99 € ",
+                        style: Styles.textStyle20,
+                      ),
+                      BookRatingWidget(),
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

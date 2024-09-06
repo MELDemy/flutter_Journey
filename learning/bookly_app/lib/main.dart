@@ -23,6 +23,7 @@ class BooklyApp extends StatelessWidget {
           backgroundColor: Colors.transparent,
           foregroundColor: Colors.white,
           toolbarHeight: 80,
+          surfaceTintColor: Colors.transparent,
         ),
       ),
       home: const SplashView(),
