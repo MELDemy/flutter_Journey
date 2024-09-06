@@ -20,9 +20,9 @@ class FeaturedHorizontalListView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: 10,
               itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.only(right: 16.0),
-                  child: BookImage(),
+                return Padding(
+                  padding: EdgeInsets.only(right: index == 9 ? 0 : 16.0),
+                  child: const BookImage(),
                 );
               },
             ),

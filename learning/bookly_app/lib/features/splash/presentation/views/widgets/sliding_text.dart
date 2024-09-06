@@ -1,7 +1,5 @@
-import 'package:bookly_app/constants.dart';
-import 'package:bookly_app/features/home/presentation/views/home_view.dart';
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class SlidingText extends StatefulWidget {
   const SlidingText({
@@ -60,8 +58,9 @@ class _SlidingTextState extends State<SlidingText>
 
   void _navigateToHomeView() {
     Future.delayed(const Duration(seconds: 2), () {
-      Get.off(const HomeView(),
-          transition: Transition.fadeIn, duration: kTransitionDuration);
+      // Get.off(const HomeView(),
+      //     transition: Transition.fadeIn, duration: kTransitionDuration);
+      AppRouter.router.pushReplacement(AppRouter.homeView);
     });
   }
 }
