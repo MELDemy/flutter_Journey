@@ -28,12 +28,10 @@ class FeaturedHorizontalListView extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 50),
         const Padding(
-          padding: kHorizontalPadding,
+          padding: EdgeInsets.only(top: 50, bottom: 20, left: 30),
           child: Text("Best Seller", style: Styles.textStyle18),
         ),
-        const SizedBox(height: 20),
       ],
     );
   }
