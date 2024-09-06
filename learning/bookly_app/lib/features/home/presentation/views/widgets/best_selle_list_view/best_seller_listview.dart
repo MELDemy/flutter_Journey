@@ -2,6 +2,8 @@ import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/presentation/views/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'book_card.dart';
+
 class BestSellerListView extends StatelessWidget {
   const BestSellerListView({super.key});
 
@@ -12,10 +14,9 @@ class BestSellerListView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Best Seller",
-            style: Styles.titleMedium,
-          )
+          Text("Best Seller", style: Styles.textStyle18),
+          SizedBox(height: 20),
+          BookCard(),
         ],
       ),
     );

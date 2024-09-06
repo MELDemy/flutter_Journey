@@ -1,7 +1,6 @@
 import 'package:bookly_app/features/home/presentation/views/constants.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_image.dart';
 import 'package:flutter/material.dart';
-
-import 'book_card.dart';
 
 class FeaturedHorizontalListView extends StatelessWidget {
   const FeaturedHorizontalListView({super.key});
@@ -15,7 +14,10 @@ class FeaturedHorizontalListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return const FeaturedBookCard();
+          return const Padding(
+            padding: EdgeInsets.only(right: 16.0),
+            child: BookImage(),
+          );
         },
       ),
     );
