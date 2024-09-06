@@ -14,7 +14,7 @@ class BestSellerSliverList extends StatefulWidget {
 class _BestSellerSliverListState extends State<BestSellerSliverList> {
   final BookModel bookModel = BookModel(
     title: "Harry Potter and the Goblet of Fire",
-    author: "J.K. Rowling",
+    author: "Rudyard Kipling",
     price: 19.99,
     rating: 4.8,
     ratersCount: 2390,

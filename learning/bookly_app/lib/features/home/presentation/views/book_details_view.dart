@@ -1,7 +1,6 @@
 import 'package:bookly_app/core/utils/app_router.dart';
-import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/features/home/data/models/book_model.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/book_image.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_details_body/book_details_body.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatelessWidget {
@@ -18,19 +17,7 @@ class BookDetailsView extends StatelessWidget {
           IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart))
         ],
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 300,
-              child: BookImage(assetImage: AssetsData.testImage),
-            ),
-            Text(bookModel.title),
-            Text(bookModel.author),
-          ],
-        ),
-      ),
+      body: BookDetailsBody(bookModel: bookModel),
     );
   }
 }

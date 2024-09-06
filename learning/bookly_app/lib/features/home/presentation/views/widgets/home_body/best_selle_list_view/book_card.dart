@@ -3,6 +3,7 @@ import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/data/models/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_image.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_rating_widget.dart';
 import 'package:flutter/material.dart';
 
 class BookCard extends StatelessWidget {
@@ -53,7 +54,7 @@ class BookCard extends StatelessWidget {
                           "${bookModel.price} € ",
                           style: Styles.textStyle20,
                         ),
-                        _bookRatingWidget(),
+                        BookRatingWidget(bookModel: bookModel),
                       ],
                     ),
                   ],
@@ -63,21 +64,6 @@ class BookCard extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _bookRatingWidget() {
-    return Row(
-      children: [
-        const Text("⭐"),
-        const SizedBox(width: 6.3),
-        Text("${bookModel.rating}", style: Styles.textStyle16),
-        const SizedBox(width: 5),
-        Text(
-          "(${bookModel.ratersCount})",
-          style: Styles.textStyle14.copyWith(color: const Color(0xff707070)),
-        ),
-      ],
     );
   }
 }
