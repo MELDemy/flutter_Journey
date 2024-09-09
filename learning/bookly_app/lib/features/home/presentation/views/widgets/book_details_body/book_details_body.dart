@@ -17,29 +17,40 @@ class BookDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double imageHeight = MediaQuery.of(context).size.height * .33;
-    return Column(
-      children: [
-        SizedBox(
-          height: imageHeight <= 500 ? imageHeight : 500,
-          child: const BookImage(assetImage: AssetsData.testImage),
-        ),
-        const SizedBox(height: 43),
-        Text(bookModel.title, style: Styles.textStyle30),
-        const SizedBox(height: 6),
-        Opacity(
-          opacity: .8,
-          child: Text(
-            bookModel.author,
-            style:
-                Styles.textStyle18.copyWith(fontFamily: kFont_MontserratFont),
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          child: Column(
+            children: [
+              SizedBox(
+                height: imageHeight >= 500
+                    ? 500
+                    : imageHeight <= 200
+                        ? 200
+                        : imageHeight,
+                child: const BookImage(assetImage: AssetsData.testImage),
+              ),
+              const SizedBox(height: 43),
+              Text(bookModel.title, style: Styles.textStyle30),
+              const SizedBox(height: 6),
+              Opacity(
+                opacity: .8,
+                child: Text(
+                  bookModel.author,
+                  style: Styles.textStyle18
+                      .copyWith(fontFamily: kFont_MontserratFont),
+                ),
+              ),
+              const SizedBox(height: 18),
+              BookRatingWidget(bookModel: bookModel),
+              const SizedBox(height: 37),
+              BookActions(bookModel: bookModel),
+              const Expanded(child: SizedBox(height: 50)),
+              const YouMayAlsoLikeWidget(),
+              const SizedBox(height: 30),
+            ],
           ),
         ),
-        const SizedBox(height: 18),
-        BookRatingWidget(bookModel: bookModel),
-        const SizedBox(height: 37),
-        BookActions(bookModel: bookModel),
-        const SizedBox(height: 60),
-        const YouMayAlsoLikeWidget()
       ],
     );
   }

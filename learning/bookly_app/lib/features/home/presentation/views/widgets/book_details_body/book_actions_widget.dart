@@ -9,10 +9,10 @@ class BookActions extends StatelessWidget {
   final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width * .8;
     return Container(
-      height: 50,
-      width: width * .8,
+      height: 45,
+      width: width > 500 ? 500 : width,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
       child: Row(

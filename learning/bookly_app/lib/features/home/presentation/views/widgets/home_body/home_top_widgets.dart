@@ -1,7 +1,7 @@
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
-import '../featured_horizontal_list_view.dart';
+import 'featured_horizontal_list_view.dart';
 
 class HomeTopWidgets extends StatelessWidget {
   const HomeTopWidgets({super.key});
