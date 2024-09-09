@@ -1,6 +1,6 @@
-import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/features/home/data/models/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_details_body/book_details_body.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_details_body/custom_details_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatelessWidget {
@@ -9,14 +9,7 @@ class BookDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            icon: const Icon(Icons.close_rounded),
-            onPressed: () => AppRouter.router.pop()),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart))
-        ],
-      ),
+      appBar: const CustomDetailsAppBar(),
       body: BookDetailsBody(bookModel: bookModel),
     );
   }

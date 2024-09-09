@@ -1,5 +1,5 @@
+import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/features/home/data/models/book_model.dart';
-import 'package:bookly_app/features/home/presentation/views/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'book_card.dart';
@@ -13,7 +13,7 @@ class BestSellerSliverList extends StatefulWidget {
 
 class _BestSellerSliverListState extends State<BestSellerSliverList> {
   final BookModel bookModel = BookModel(
-    title: "Harry Potter and the Goblet of Fire",
+    title: "The Jungle Book",
     author: "Rudyard Kipling",
     price: 19.99,
     rating: 4.8,

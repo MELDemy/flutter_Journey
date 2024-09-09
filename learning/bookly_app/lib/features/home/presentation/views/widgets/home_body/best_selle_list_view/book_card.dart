@@ -38,7 +38,7 @@ class BookCard extends StatelessWidget {
                         bookModel.title,
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.normal,
-                          fontFamily: kGTSectraFine,
+                          fontFamily: kFont_GTSectraFine,
                         ),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
