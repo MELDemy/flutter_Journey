@@ -1,11 +1,11 @@
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/data/models/book_model.dart';
+import 'package:bookly_app/features/home/data/models/book_model2.dart';
 import 'package:flutter/material.dart';
 
 class BookRatingWidget extends StatelessWidget {
   const BookRatingWidget({required this.bookModel, super.key});
 
-  final BookModel bookModel;
+  final BookModel2 bookModel;
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -1,7 +1,7 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/data/models/book_model.dart';
+import 'package:bookly_app/features/home/data/models/book_model2.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_details_body/you_may_also_like_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ import 'book_actions_widget.dart';
 class BookDetailsBody extends StatelessWidget {
   const BookDetailsBody({super.key, required this.bookModel});
 
-  final BookModel bookModel;
+  final BookModel2 bookModel;
 
   @override
   Widget build(BuildContext context) {

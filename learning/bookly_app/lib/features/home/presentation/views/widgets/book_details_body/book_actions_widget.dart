@@ -1,12 +1,12 @@
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/core/widgets/custom_button.dart';
-import 'package:bookly_app/features/home/data/models/book_model.dart';
+import 'package:bookly_app/features/home/data/models/book_model2.dart';
 import 'package:flutter/material.dart';
 
 class BookActions extends StatelessWidget {
   const BookActions({required this.bookModel, super.key});
 
-  final BookModel bookModel;
+  final BookModel2 bookModel;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width * .8;
