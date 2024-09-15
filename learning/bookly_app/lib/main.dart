@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 
 void main() async {
-  await HomeRepoImpl(ApiService(Dio())).fetch();
+  await HomeRepoImpl(ApiService(Dio())).testFetch();
 
   runApp(const BooklyApp());
 }
