@@ -14,7 +14,7 @@ class HomeRepoImpl implements HomeRepo {
   testFetch() async {
     Map<String, dynamic> response = await apiService.get(
         endPoint:
-            "volumes?q=subject:engineering&filter=free-ebooks&Sorting=newest");
+            "volumes?filter=free-ebooks&Sorting=newest&q=subject:engineering");
 
     var apiResponse = ApiResponseModel.fromJson(response);
     print(apiResponse.items?[0].kind);
@@ -24,12 +24,12 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel1>>> fetchNewestBooks() async {
     try {
       Map<String, dynamic> response = await apiService.get(
-          endPoint:
-              "volumes?q=subject:engineering&filter=free-ebooks&Sorting=newest");
+          endPoint: "volumes?filter=free-ebooks&q=subject:engineering");
 
       ApiResponseModel apiResponse = ApiResponseModel.fromJson(response);
+      List<BookModel1> booksList = apiResponse.items ?? [];
 
-      return right(apiResponse.items ?? []);
+      return right(booksList);
     } on DioException catch (e) {
       return left(ServerFailure.fromDioException(e));
     } catch (e) {
@@ -38,8 +38,19 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel1>>> fetchFeaturedBooks() {
-    // TODO: implement fetchNewestBooks
-    throw UnimplementedError();
+  Future<Either<Failure, List<BookModel1>>> fetchFeaturedBooks() async {
+    try {
+      Map<String, dynamic> response = await apiService.get(
+          endPoint: "volumes?filter=free-ebooks&q=subject:engineering");
+
+      ApiResponseModel apiResponse = ApiResponseModel.fromJson(response);
+      List<BookModel1> booksList = apiResponse.items ?? [];
+
+      return right(booksList);
+    } on DioException catch (e) {
+      return left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
   }
 }
