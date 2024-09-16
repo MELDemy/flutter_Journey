@@ -2,7 +2,7 @@ import 'AccessInfo.dart';
 import 'SaleInfo.dart';
 import 'VolumeInfo.dart';
 
-class BookModel1 {
+class BookModel {
   String? kind;
   String? id;
   String? etag;
@@ -11,7 +11,7 @@ class BookModel1 {
   SaleInfo? saleInfo;
   AccessInfo? accessInfo;
 
-  BookModel1({
+  BookModel({
     this.kind,
     this.id,
     this.etag,
@@ -21,7 +21,7 @@ class BookModel1 {
     this.accessInfo,
   });
 
-  BookModel1.fromJson(dynamic json) {
+  BookModel.fromJson(dynamic json) {
     kind = json['kind'];
     id = json['id'];
     etag = json['etag'];

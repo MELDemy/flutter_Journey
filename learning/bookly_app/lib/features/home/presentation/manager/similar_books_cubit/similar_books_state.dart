@@ -6,7 +6,7 @@ sealed class SimilarBooksState {}
 final class SimilarBooksInitial extends SimilarBooksState {}
 
 final class SimilarBooksSuccess extends SimilarBooksState {
-  final List<BookModel1> books;
+  final List<BookModel> books;
 
   SimilarBooksSuccess(this.books);
 }

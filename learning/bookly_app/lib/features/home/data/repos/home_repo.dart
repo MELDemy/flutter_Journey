@@ -3,8 +3,8 @@ import 'package:bookly_app/features/home/data/models/BookModel1.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class HomeRepo {
-  Future<Either<Failure, List<BookModel1>>> fetchNewestBooks();
-  Future<Either<Failure, List<BookModel1>>> fetchFeaturedBooks();
-  Future<Either<Failure, List<BookModel1>>> fetchSimilarBooks(
+  Future<Either<Failure, List<BookModel>>> fetchNewestBooks();
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks();
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
       {required String category});
 }

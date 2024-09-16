@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class BookRatingWidget extends StatelessWidget {
   const BookRatingWidget({required this.bookModel, super.key});
 
-  final BookModel1 bookModel;
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class BookCard extends StatelessWidget {
   const BookCard({super.key, required this.bookModel});
 
-  final BookModel1 bookModel;
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return InkWell(

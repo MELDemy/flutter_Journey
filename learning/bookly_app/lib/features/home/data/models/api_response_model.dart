@@ -3,7 +3,7 @@ import 'package:bookly_app/features/home/data/models/BookModel1.dart';
 class ApiResponseModel {
   String? kind;
   num? totalItems;
-  List<BookModel1>? items;
+  List<BookModel>? items;
 
   ApiResponseModel({
     required this.kind,
@@ -17,7 +17,7 @@ class ApiResponseModel {
     if (json['items'] != null) {
       items = [];
       for (dynamic item in json['items']) {
-        items?.add(BookModel1.fromJson(item));
+        items?.add(BookModel.fromJson(item));
       }
     }
   }
@@ -28,7 +28,7 @@ class ApiResponseModel {
     map['totalItems'] = totalItems;
     if (items != null) {
       map['items'] =
-          items?.map((BookModel1 bookModel) => bookModel.toJson()).toList();
+          items?.map((BookModel bookModel) => bookModel.toJson()).toList();
     }
     return map;
   }

@@ -39,7 +39,7 @@ class SearchResultsListView extends StatefulWidget {
 }
 
 class _SearchResultsListViewState extends State<SearchResultsListView> {
-  final BookModel1 bookModel = BookModel1();
+  final BookModel bookModel = BookModel();
 
   @override
   Widget build(BuildContext context) {

@@ -22,7 +22,7 @@ abstract class AppRouter {
       GoRoute(
         path: kBookDetailsView,
         builder: (context, state) {
-          BookModel1 bookModel = state.extra as BookModel1;
+          BookModel bookModel = state.extra as BookModel;
           return BookDetailsView(bookModel: bookModel);
         },
       ),

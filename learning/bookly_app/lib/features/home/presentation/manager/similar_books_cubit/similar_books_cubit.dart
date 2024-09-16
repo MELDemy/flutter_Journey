@@ -12,10 +12,10 @@ class SimilarBooksCubit extends Cubit<SimilarBooksState> {
       : super(SimilarBooksInitial());
 
   final HomeRepo homeRepo;
-  BookModel1 bookModel1;
+  BookModel bookModel1;
   fetchSimilarBooks() async {
     emit(SimilarBooksLoading());
-    Either<Failure, List<BookModel1>> result = await homeRepo.fetchSimilarBooks(
+    Either<Failure, List<BookModel>> result = await homeRepo.fetchSimilarBooks(
         category: bookModel1.volumeInfo?.categories?[0] ?? "");
 
     result.fold((failure) {

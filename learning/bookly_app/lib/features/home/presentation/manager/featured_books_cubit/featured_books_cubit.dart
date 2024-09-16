@@ -14,7 +14,7 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
 
   fetchFeaturedBooks() async {
     emit(FeaturedBooksLoading());
-    Either<Failure, List<BookModel1>> result =
+    Either<Failure, List<BookModel>> result =
         await homeRepo.fetchFeaturedBooks();
 
     result.fold((failure) {

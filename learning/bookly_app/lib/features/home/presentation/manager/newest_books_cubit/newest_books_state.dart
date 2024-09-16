@@ -9,7 +9,7 @@ sealed class NewestBooksState extends Equatable {
 final class NewestBooksInitial extends NewestBooksState {}
 
 final class NewestBooksSuccess extends NewestBooksState {
-  final List<BookModel1> books;
+  final List<BookModel> books;
 
   const NewestBooksSuccess(this.books);
 }

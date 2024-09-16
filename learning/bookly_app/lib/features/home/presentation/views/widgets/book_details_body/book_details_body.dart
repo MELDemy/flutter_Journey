@@ -15,7 +15,7 @@ import 'book_actions_widget.dart';
 class BookDetailsBody extends StatelessWidget {
   const BookDetailsBody({super.key, required this.bookModel});
 
-  final BookModel1 bookModel;
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {

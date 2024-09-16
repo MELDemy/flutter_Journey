@@ -7,7 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 class BookActions extends StatelessWidget {
   const BookActions({required this.bookModel, super.key});
 
-  final BookModel1 bookModel;
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width * .8;
