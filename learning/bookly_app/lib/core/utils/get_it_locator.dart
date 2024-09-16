@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 
 void getItSetup() {
   GetIt.I.registerSingleton<ApiService>(ApiService(Dio()));
+
   GetIt.I.registerSingleton<HomeRepoImpl>(
     HomeRepoImpl(GetIt.I.get<ApiService>()),
   );

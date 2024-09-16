@@ -1,5 +1,5 @@
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/data/models/book_model2.dart';
+import 'package:bookly_app/features/home/data/models/BookModel1.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/home_body/best_selle_list_view/book_card.dart';
 import 'package:bookly_app/features/search/presentation/views/widgets/custon_search_text_field.dart';
 import 'package:flutter/material.dart';
@@ -39,13 +39,7 @@ class SearchResultsListView extends StatefulWidget {
 }
 
 class _SearchResultsListViewState extends State<SearchResultsListView> {
-  final BookModel2 bookModel = BookModel2(
-    title: "The Jungle Book",
-    author: "Rudyard Kipling",
-    price: 19.99,
-    rating: 4.8,
-    ratersCount: 2390,
-  );
+  final BookModel1 bookModel = BookModel1();
 
   @override
   Widget build(BuildContext context) {

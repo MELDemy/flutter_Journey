@@ -8,17 +8,12 @@ class HomeTopWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(height: 32),
+        FeaturedHorizontalListView(),
         Padding(
-          padding: const EdgeInsets.only(top: 32),
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * .28,
-            child: const FeaturedHorizontalListView(),
-          ),
-        ),
-        const Padding(
           padding: EdgeInsets.only(top: 50, bottom: 20, left: 30),
           child: Text("Best Seller", style: Styles.textStyle18),
         ),

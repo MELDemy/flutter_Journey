@@ -6,14 +6,17 @@ import 'ReadingModes.dart';
 class VolumeInfo {
   VolumeInfo({
     this.title,
-    this.subtitle,
     this.authors,
+    this.publisher,
     this.publishedDate,
+    this.description,
     this.industryIdentifiers,
     this.readingModes,
     this.pageCount,
     this.printType,
     this.categories,
+    this.averageRating,
+    this.ratingsCount,
     this.maturityRating,
     this.allowAnonLogging,
     this.contentVersion,
@@ -27,9 +30,10 @@ class VolumeInfo {
 
   VolumeInfo.fromJson(dynamic json) {
     title = json['title'];
-    subtitle = json['subtitle'];
     authors = json['authors'] != null ? json['authors'].cast<String>() : [];
+    publisher = json['publisher'];
     publishedDate = json['publishedDate'];
+    description = json['description'];
     if (json['industryIdentifiers'] != null) {
       industryIdentifiers = [];
       json['industryIdentifiers'].forEach((v) {
@@ -43,6 +47,8 @@ class VolumeInfo {
     printType = json['printType'];
     categories =
         json['categories'] != null ? json['categories'].cast<String>() : [];
+    averageRating = json['averageRating'];
+    ratingsCount = json['ratingsCount'];
     maturityRating = json['maturityRating'];
     allowAnonLogging = json['allowAnonLogging'];
     contentVersion = json['contentVersion'];
@@ -58,14 +64,17 @@ class VolumeInfo {
     canonicalVolumeLink = json['canonicalVolumeLink'];
   }
   String? title;
-  String? subtitle;
   List<String>? authors;
+  String? publisher;
   String? publishedDate;
+  String? description;
   List<IndustryIdentifiers>? industryIdentifiers;
   ReadingModes? readingModes;
   num? pageCount;
   String? printType;
   List<String>? categories;
+  num? averageRating;
+  num? ratingsCount;
   String? maturityRating;
   bool? allowAnonLogging;
   String? contentVersion;
@@ -79,9 +88,10 @@ class VolumeInfo {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['title'] = title;
-    map['subtitle'] = subtitle;
     map['authors'] = authors;
+    map['publisher'] = publisher;
     map['publishedDate'] = publishedDate;
+    map['description'] = description;
     if (industryIdentifiers != null) {
       map['industryIdentifiers'] =
           industryIdentifiers?.map((v) => v.toJson()).toList();
@@ -92,6 +102,8 @@ class VolumeInfo {
     map['pageCount'] = pageCount;
     map['printType'] = printType;
     map['categories'] = categories;
+    map['averageRating'] = averageRating;
+    map['ratingsCount'] = ratingsCount;
     map['maturityRating'] = maturityRating;
     map['allowAnonLogging'] = allowAnonLogging;
     map['contentVersion'] = contentVersion;
